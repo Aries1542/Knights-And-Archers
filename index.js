@@ -115,6 +115,23 @@ wss.on('connection', function (ws) { //Event: client connects to server
                     gameBoard : gameBoard
                 }), { binary: isBinary })
                 break
+            case 'RESET':
+                gameBoard = new c.Board()
+                setUpBoard(gameBoard)
+                numClients = 0;
+                wss.clients.forEach(function (client) { //Event: data recieved from client
+                    if (client.readyState === WebSocket.OPEN) {
+                        numClients += 1
+                        ws.send(JSON.stringify({
+                            action: "ASSIGN",
+                            player: "p" + numClients
+                        }))
+                        client.send(JSON.stringify({
+                            action: "UPDATE",
+                            gameBoard: gameBoard
+                        }))
+                    }
+                })
             default:
                 ws.send("invalid request: unknown action")
                 return
