@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <div id="app">
+        <h1 id="title">You are team {{ teamColor }}</h1>
+        <h2 id="prompt">{{ prompt }}</h2>
+        <div id="boardWrapper">
+            <div v-for="row, rowIndex in boardDisplay" class="row">
+                <div v-for="col, colIndex in row" @click="takeAction(col, rowIndex, colIndex)" class="square" :class="[col.player, col.display]">
+                    <div v-if="col.type" class="maxHp"></div>  
+                    <div v-if="col.type" class="currentHp" :style="{width: calcHealthBarWidth(col)}"></div>  
+                    {{ col.type }}
+                </div>
+            </div>
+        </div>
+        <button id="submit" v-if="displaySubmit" @click="sendMessage">submit</button>
+        <div v-else class="placeholder"></div>
+        <button id="undo" v-if="displayUndo" @click="requestBoard">undo</button>
+        <div v-else class="placeholder"></div>    
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+
+
+</html>

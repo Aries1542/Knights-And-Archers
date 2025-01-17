@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    grid-auto-rows: auto;
+    background-color: lightgray;
+    min-height: 100vh;
+}
+
+#title {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+
+#prompt {
+    grid-column: 2 / -2;
+    grid-row: 2 / 3;
+}
+
+#title, #prompt {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#submit {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+#undo {
+    grid-column: 3 / -2;
+    grid-row: 4 / 5;
+}
+
+#submit, #undo {
+    width: 140px;
+    height: 40px;
+    margin: 20px auto;
+    text-align: center;
+    color: white;
+    background-color: darkgray;
+    border: black solid 5px;
+}
+
+#submit:hover, #undo:hover {
+    color: white;
+    background-color: darkgray;
+    border: black solid 5px;
+}
+
+#submit:active, #undo:active {
+    color: white;
+    background-color: darkgray;
+    border: black solid 5px;
+}
+
+.placeholder {
+    height: 40px;
+    grid-row: 4 / 5;
+}
+
+#boardWrapper {
+    grid-column: 2 / -2;
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-rows: repeat(10, 50px); 
+}
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 8% 92%;
+    background-color: white;
+}
+
+.maxHp, .currentHp {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    height: 100%;
+}
+.maxHp {
+    background-color: red;
+}
+.currentHp {
+    background-color: lime;
+}
+
+.p1, .p2 {
+    /* display: block;
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    height: 100%; */
+    line-height: 100%;
+    text-align: center;
+    cursor: default;
+}
+.p1 {
+    color: orange;
+}
+.p2 {
+    color: blue;
+}
+
+.selected {
+    background-color: blue;
+}
+
+.target {
+    background-color: salmon;
+}
+
+.inRange {
+    background-color: aquamarine;
+}
+
+.locked {
+    background-color: grey;
+}
