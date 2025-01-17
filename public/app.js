@@ -317,7 +317,7 @@ computed :  {
 
 created : function () {
     this.boardReset()
-    this.socket = new WebSocket("ws://knightsandarchers.onrender.com:8080")
+    this.socket = new WebSocket("wss://knightsandarchers.onrender.com:8080")
     this.socket.onmessage = (event) => {
         console.log(event)
         this.handleMessage(JSON.parse(event.data))
