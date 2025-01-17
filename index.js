@@ -122,7 +122,7 @@ wss.on('connection', function (ws) { //Event: client connects to server
                 wss.clients.forEach(function (client) { //Event: data recieved from client
                     if (client.readyState === WebSocket.OPEN) {
                         numClients += 1
-                        ws.send(JSON.stringify({
+                        client.send(JSON.stringify({
                             action: "ASSIGN",
                             player: "p" + numClients
                         }))
